@@ -7,3 +7,8 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.container{
+  width: min(90%, 1440px);
+  margin: 0 auto;
+}

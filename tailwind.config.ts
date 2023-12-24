@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         primary: '#D87D4A',
         'primary-300': '#fbaf85',
+        bg: '#191919',
         dark: '#101010',
         darker: '#000000',
         neutral: '#ffffff',
@@ -79,6 +80,14 @@ const config: Config = {
           {
             lineHeight: '25px',
             letterSpacing: '1px',
+            fontWeight: '700',
+          },
+        ],
+        nav: [
+          '13px',
+          {
+            lineHeight: '25px',
+            letterSpacing: '2px',
             fontWeight: '700',
           },
         ],

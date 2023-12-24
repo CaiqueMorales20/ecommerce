@@ -1,3 +1,9 @@
+import Hero from './(home)/Hero'
+
 export default function Home() {
-  return <main className="text-overline text-primary">Ready to code!</main>
+  return (
+    <main>
+      <Hero />
+    </main>
+  )
 }
