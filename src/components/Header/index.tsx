@@ -4,7 +4,7 @@ import Image from 'next/image'
 export default function Header() {
   // Rendering
   return (
-    <header className="bg-dark flex h-[96px] items-center ">
+    <header className="flex h-[96px] items-center bg-dark ">
       <nav className="container grid grid-cols-3">
         <Image
           src="/logo.svg"
@@ -14,16 +14,16 @@ export default function Header() {
           priority
         />
         <ul className="flex gap-[34px]">
-          <li className="text-nav cursor-pointer uppercase text-white duration-300 hover:text-primary-300">
+          <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
             Home
           </li>
-          <li className="text-nav cursor-pointer uppercase text-white duration-300 hover:text-primary-300">
+          <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
             Headphones
           </li>
-          <li className="text-nav cursor-pointer uppercase text-white duration-300 hover:text-primary-300">
+          <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
             Speakers
           </li>
-          <li className="text-nav cursor-pointer uppercase text-white duration-300 hover:text-primary-300">
+          <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
             Earphones
           </li>
         </ul>

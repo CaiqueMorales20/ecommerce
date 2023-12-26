@@ -7,7 +7,7 @@ export default function Button({ type }: ButtonType) {
   // Rendering
   return (
     <button
-      className={`text-subtitle  px-[30px] py-[15px] uppercase  duration-300 
+      className={`px-[30px]  py-[15px] text-subtitle uppercase  duration-300 
       
         ${
           type === 'primary'
