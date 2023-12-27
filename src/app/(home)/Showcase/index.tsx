@@ -15,7 +15,7 @@ export default function Showcase() {
           height={168}
         />
         <h3 className="mb-[15px] text-h6">Headphones</h3>
-        <Button type="primary" />
+        <Button type="tertiary" />
       </div>
       <div className="flex flex-col items-center justify-center rounded-[8px] bg-neutral-600 pb-[30px]">
         <Image
@@ -26,7 +26,7 @@ export default function Showcase() {
           height={146}
         />
         <h3 className="mb-[15px] text-h6">Headphones</h3>
-        <Button type="primary" />
+        <Button type="tertiary" />
       </div>
       <div className="flex flex-col items-center justify-center rounded-[8px] bg-neutral-600 pb-[30px]">
         <Image
@@ -37,7 +37,7 @@ export default function Showcase() {
           height={161}
         />
         <h3 className="mb-[15px] text-h6">Headphones</h3>
-        <Button type="primary" />
+        <Button type="tertiary" />
       </div>
     </div>
   )
