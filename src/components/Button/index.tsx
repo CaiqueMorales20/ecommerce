@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 interface ButtonType {
-  type: 'primary' | 'secondary' | 'tertiary'
+  type: 'primary' | 'secondary' | 'secondary-reverse' | 'tertiary'
 }
 
 // Functional Component
@@ -15,9 +15,11 @@ export default function Button({ type }: ButtonType) {
             ? 'solid border border-primary bg-primary text-white hover:border-primary-300 hover:bg-primary-300'
             : type === 'secondary'
               ? ' solid border border-black bg-white text-black hover:bg-black hover:text-white'
-              : type === 'tertiary'
-                ? 'text-black/50 hover:text-primary'
-                : ''
+              : type === 'secondary-reverse'
+                ? ' solid border border-black bg-black text-white hover:bg-white hover:text-black'
+                : type === 'tertiary'
+                  ? 'text-black/50 hover:text-primary'
+                  : ''
         }
       `}
     >
