@@ -1,6 +1,8 @@
 
 # Ecommerce
 
+<img src="https://imgur.com/2fS291W.png"/>
+
 ## 🛠 Technologies
 
 - Next
