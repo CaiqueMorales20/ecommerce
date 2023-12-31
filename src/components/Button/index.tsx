@@ -9,14 +9,14 @@ export default function Button({ type }: ButtonType) {
   // Rendering
   return (
     <button
-      className={`flex  items-center gap-[13.3px] px-[30px] py-[15px] text-subtitle uppercase duration-300 
+      className={`flex w-max items-center gap-[13.3px] px-[30px] py-[15px] text-subtitle uppercase duration-300 
         ${
           type === 'primary'
             ? 'solid border border-primary bg-primary text-white hover:border-primary-300 hover:bg-primary-300'
             : type === 'secondary'
-              ? ' solid border border-black bg-white text-black hover:bg-black hover:text-white'
+              ? ' solid border border-black bg-transparent text-black hover:bg-black hover:text-white'
               : type === 'secondary-reverse'
-                ? ' solid border border-black bg-black text-white hover:bg-white hover:text-black'
+                ? ' solid border border-black bg-black text-white hover:bg-transparent hover:text-black'
                 : type === 'tertiary'
                   ? 'text-black/50 hover:text-primary'
                   : ''

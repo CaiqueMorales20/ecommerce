@@ -99,6 +99,9 @@ const config: Config = {
           },
         ],
       },
+      gridTemplateColumns: {
+        ad: '1fr 2fr',
+      },
     },
   },
   plugins: [],

@@ -1,5 +1,6 @@
 import Ads from './(home)/Ads'
 import Hero from './(home)/Hero'
+import Pitch from './(home)/Pitch'
 import Showcase from './(home)/Showcase'
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <Showcase />
       <Ads />
+      <Pitch />
     </main>
   )
 }
