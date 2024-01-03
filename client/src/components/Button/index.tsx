@@ -2,13 +2,15 @@ import Image from 'next/image'
 
 interface ButtonType {
   type: 'primary' | 'secondary' | 'secondary-reverse' | 'tertiary'
+  onClick?: () => void
 }
 
 // Functional Component
-export default function Button({ type }: ButtonType) {
+export default function Button({ type, onClick }: ButtonType) {
   // Rendering
   return (
     <button
+      onClick={onClick}
       className={`flex w-max items-center gap-[13.3px] px-[30px] py-[15px] text-subtitle uppercase duration-300 
         ${
           type === 'primary'

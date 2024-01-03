@@ -4,7 +4,7 @@ import Image from 'next/image'
 export default function Pitch() {
   // Rendering
   return (
-    <div className="container grid grid-cols-2 items-center gap-[125px] pb-[200px]">
+    <div className="grid grid-cols-2 items-center gap-[125px] pb-[200px]">
       <div>
         <h2 className="mb-[32px] max-w-[445px] text-h2 uppercase">
           Bringing you the <span className="text-primary">best</span> audio gear

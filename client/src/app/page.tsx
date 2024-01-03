@@ -1,15 +1,17 @@
+import Pitch from '@/components/Pitch'
 import Ads from './(home)/Ads'
 import Hero from './(home)/Hero'
-import Pitch from './(home)/Pitch'
-import Showcase from './(home)/Showcase'
+import Showcase from '@/components/Showcase'
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <Showcase />
-      <Ads />
-      <Pitch />
+      <div className="container">
+        <Showcase />
+        <Ads />
+        <Pitch />
+      </div>
     </main>
   )
 }

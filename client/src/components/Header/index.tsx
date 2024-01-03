@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 // Functional Component
 export default function Header() {
@@ -14,18 +15,26 @@ export default function Header() {
           priority
         />
         <ul className="flex gap-[34px]">
-          <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
-            Home
-          </li>
-          <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
-            Headphones
-          </li>
-          <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
-            Speakers
-          </li>
-          <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
-            Earphones
-          </li>
+          <Link href="/">
+            <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
+              Home
+            </li>
+          </Link>
+          <Link href="/category/headphones">
+            <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
+              Headphones
+            </li>
+          </Link>
+          <Link href="/category/speakers">
+            <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
+              Speakers
+            </li>
+          </Link>
+          <Link href="/category/earphones">
+            <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
+              Earphones
+            </li>
+          </Link>
         </ul>
         <Image
           className="justify-self-end"
