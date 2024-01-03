@@ -1,6 +1,7 @@
 import Showcase from '@/components/Showcase'
 import Item from './Item'
 import Pitch from '@/components/Pitch'
+import { products } from '@/data/products'
 
 // Functional Component
 export default function Category({ params }: { params: { name: string } }) {
@@ -16,9 +17,22 @@ export default function Category({ params }: { params: { name: string } }) {
       {/* Body */}
       <div className="container">
         <div className="pb-[220px]">
-          {Array.from([0, 0, 0]).map((item, index) => (
-            <Item reversed={index % 2 !== 0} key={index} />
-          ))}
+          {products.map((product, index) => {
+            if (product.category === params.name) {
+              return (
+                <Item
+                  name={product.name}
+                  description={product.description}
+                  photoPath={product.photoPath}
+                  slug={product.slug}
+                  category={product.category}
+                  reversed={index % 2 !== 0}
+                  key={index}
+                />
+              )
+            }
+            return <></>
+          })}
         </div>
         <Showcase />
         <Pitch />
