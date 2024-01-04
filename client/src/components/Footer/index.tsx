@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 // Functional Component
 export default function Footer() {
@@ -6,17 +7,17 @@ export default function Footer() {
   return (
     <div className="bg-dark pb-[48px] pt-[75px]">
       <div className="container">
-        <div className="mb-[56px] flex justify-between">
+        <div className="mb-[56px] flex flex-col justify-between md:flex-row">
           {/* About */}
-          <div className="max-w-[540px]">
+          <div className="max-w-[540px] text-center md:text-left">
             <Image
-              className="mb-[36px]"
+              className="mx-auto mb-[36px] md:mx-0"
               src="/logo.svg"
               alt="Logo"
               width={143}
               height={25}
             />
-            <p className="text-body text-white opacity-50">
+            <p className="mb-[48px] text-body text-white opacity-50 md:mb-0">
               Audiophile is an all in one stop to fulfill your audio needs. We
               are a small team of music lovers and sound specialists who are
               devoted to helping you get the most out of personal audio. Come
@@ -24,20 +25,28 @@ export default function Footer() {
             </p>
           </div>
           {/* Nav */}
-          <div className="flex flex-col justify-between">
-            <ul className="flex max-w-max gap-[34px]">
-              <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
-                Home
-              </li>
-              <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
-                Headphones
-              </li>
-              <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
-                Speakers
-              </li>
-              <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
-                Earphones
-              </li>
+          <div className="flex flex-col items-center justify-between text-center md:items-end md:text-left">
+            <ul className="mb-[48px] flex max-w-max flex-col gap-[34px] md:mb-0 md:flex-row">
+              <Link href="/">
+                <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
+                  Home
+                </li>
+              </Link>
+              <Link href="/category/headphones">
+                <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
+                  Headphones
+                </li>
+              </Link>
+              <Link href="/category/speakers">
+                <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
+                  Speakers
+                </li>
+              </Link>
+              <Link href="/category/earphones">
+                <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
+                  Earphones
+                </li>
+              </Link>
             </ul>
             <nav className="flex justify-end gap-[16px]">
               <a href="">
@@ -67,7 +76,7 @@ export default function Footer() {
             </nav>
           </div>
         </div>
-        <p className="mb-[56px] text-body text-white opacity-50">
+        <p className="mb-[56px] text-center text-body text-white opacity-50 md:text-left">
           Copyright 2021. All Rights Reserved
         </p>
       </div>

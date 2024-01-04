@@ -8,6 +8,25 @@
   box-sizing: border-box;
 }
 
+body::after{
+  content: "";
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s, z-index 0s 0.3s;
+  position: fixed;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.4);
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+body.menu-opened::after{
+  z-index: 20;
+  opacity: 1;
+  transition: opacity 0.3s, z-index 0s; 
+}
+
 .container{
   width: min(90%, 1440px);
   margin: 0 auto;

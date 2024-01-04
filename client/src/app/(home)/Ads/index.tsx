@@ -6,7 +6,7 @@ import ZX9 from './ZX9'
 export default function Ads() {
   // Rendering
   return (
-    <div className="pb-[200px]">
+    <div className="pb-[120px] md:pb-[200px]">
       <ZX9 />
       <ZX7 />
       <YX1 />
