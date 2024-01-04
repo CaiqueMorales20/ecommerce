@@ -1,8 +1,9 @@
 'use client'
 
-import { useOnClickOutside } from '@/hooks/useOnClickOutside'
 import Image from 'next/image'
 import Link from 'next/link'
+
+import { useOnClickOutside } from '@/hooks/useOnClickOutside'
 import { useRef, useState } from 'react'
 
 // Functional Component
@@ -53,23 +54,35 @@ export default function Header() {
               : '-z-10 opacity-0 md:z-10 md:opacity-100'
           }`}
         >
-          <Link onClick={closeMenu} href="/">
-            <li className="cursor-pointer text-nav uppercase text-dark duration-300 hover:text-primary-300 md:text-white">
+          <Link href="/">
+            <li
+              onClick={closeMenu}
+              className="cursor-pointer text-nav uppercase text-dark duration-300 hover:text-primary-300 md:text-white"
+            >
               Home
             </li>
           </Link>
-          <Link onClick={closeMenu} href="/category/headphones">
-            <li className="cursor-pointer text-nav uppercase text-dark duration-300 hover:text-primary-300 md:text-white">
+          <Link href="/category/headphones">
+            <li
+              onClick={closeMenu}
+              className="cursor-pointer text-nav uppercase text-dark duration-300 hover:text-primary-300 md:text-white"
+            >
               Headphones
             </li>
           </Link>
-          <Link onClick={closeMenu} href="/category/speakers">
-            <li className="cursor-pointer text-nav uppercase text-dark duration-300 hover:text-primary-300 md:text-white">
+          <Link href="/category/speakers">
+            <li
+              onClick={closeMenu}
+              className="cursor-pointer text-nav uppercase text-dark duration-300 hover:text-primary-300 md:text-white"
+            >
               Speakers
             </li>
           </Link>
-          <Link onClick={closeMenu} href="/category/earphones">
-            <li className="cursor-pointer text-nav uppercase text-dark duration-300 hover:text-primary-300 md:text-white">
+          <Link href="/category/earphones">
+            <li
+              onClick={closeMenu}
+              className="cursor-pointer text-nav uppercase text-dark duration-300 hover:text-primary-300 md:text-white"
+            >
               Earphones
             </li>
           </Link>

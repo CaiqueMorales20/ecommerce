@@ -25,14 +25,18 @@ export default function Button({ type, onClick }: ButtonType) {
         }
       `}
     >
-      See product
-      {type === 'tertiary' && (
-        <Image
-          src="/icons/arrow-right.svg"
-          width={7}
-          height={12}
-          alt="Go shop"
-        />
+      {type === 'tertiary' ? (
+        <>
+          Shop
+          <Image
+            src="/icons/arrow-right.svg"
+            width={7}
+            height={12}
+            alt="Go shop"
+          />
+        </>
+      ) : (
+        'See Product'
       )}
     </button>
   )

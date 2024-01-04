@@ -1,5 +1,6 @@
 import Button from '@/components/Button'
 import Image from 'next/image'
+
 import { IProduct } from './types'
 
 // Functional Component
@@ -11,20 +12,32 @@ export default function Item({
 }: IProduct & { reversed: boolean }) {
   // Rendering
   return (
-    <div className="grid items-center gap-[125px] pt-[160px] md:grid-cols-2">
+    <div className="grid items-center gap-[32px] text-center md:grid-cols-2 md:gap-[125px] md:pt-[160px] md:text-left">
       <div
         className={`grid w-full items-center justify-center bg-neutral-600 pb-[108px] pt-[65px] ${
-          reversed && 'col-start-2'
+          reversed && 'md:col-start-2'
         }`}
       >
-        <Image src={photoPath} alt={name} width={349} height={386} />
+        <Image
+          className="aspect-square h-auto w-full md:w-[349px]"
+          src={photoPath}
+          alt={name}
+          width={349}
+          height={386}
+        />
       </div>
-      <div className={`max-w-[445px] ${reversed && 'col-start-1 row-start-1'}`}>
-        <h2 className="mb-[16px] text-overline uppercase text-primary-300 opacity-50">
+      <div
+        className={`flex max-w-[445px] flex-col items-center md:block ${
+          reversed && 'md:col-start-1 md:row-start-1'
+        }`}
+      >
+        <h2 className="mb-[24px] text-overline uppercase text-primary-300 opacity-50 md:mb-[16px]">
           New product
         </h2>
-        <h1 className="mb-[32px] text-h2 uppercase text-black/50">{name}</h1>
-        <p className="mb-[40px] text-body text-black/50 opacity-75">
+        <h1 className="mdmb-[32px] mb-[24px] text-h4 uppercase text-black/50 md:text-h2">
+          {name}
+        </h1>
+        <p className="mdmb-[40px] mb-[24px] text-body text-black/50 opacity-75">
           {description}
         </p>
         <Button type="primary" />
