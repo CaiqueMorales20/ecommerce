@@ -2,6 +2,7 @@ import Button from '@/components/Button'
 import Image from 'next/image'
 
 import { IProduct } from './types'
+import Link from 'next/link'
 
 // Functional Component
 export default function Item({
@@ -9,6 +10,7 @@ export default function Item({
   description,
   photoPath,
   reversed,
+  slug,
 }: IProduct & { reversed: boolean }) {
   // Rendering
   return (
@@ -40,7 +42,9 @@ export default function Item({
         <p className="mdmb-[40px] mb-[24px] text-body text-black/50 opacity-75">
           {description}
         </p>
-        <Button type="primary" />
+        <Link href={`../product/${slug}`}>
+          <Button text="See product" type="primary" />
+        </Link>
       </div>
     </div>
   )

@@ -1,7 +1,9 @@
 import Showcase from '@/components/Showcase'
 import Item from './Item'
 import Pitch from '@/components/Pitch'
+
 import { products } from '@/data/products'
+import React from 'react'
 
 // Functional Component
 export default function Category({ params }: { params: { name: string } }) {
@@ -33,7 +35,7 @@ export default function Category({ params }: { params: { name: string } }) {
                 />
               )
             }
-            return <></>
+            return <React.Fragment key={index}></React.Fragment>
           })}
         </div>
         <Showcase />

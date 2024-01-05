@@ -21,7 +21,7 @@ export default function ZX9() {
           Upgrade to premium speakers that are phenomenally built to deliver
           truly remarkable sound.
         </p>
-        <Button type="secondary-reverse" />
+        <Button text="See product" type="secondary-reverse" />
       </div>
     </div>
   )

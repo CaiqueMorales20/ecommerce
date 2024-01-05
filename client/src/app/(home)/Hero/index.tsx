@@ -18,7 +18,7 @@ export default function Hero() {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
-          <Button type="primary" />
+          <Button text="See product" type="primary" />
         </div>
         <div className="col-start-1 row-start-1 flex w-full justify-center md:col-start-2 md:justify-end">
           <Image
