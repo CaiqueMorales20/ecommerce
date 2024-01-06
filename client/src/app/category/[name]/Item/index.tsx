@@ -36,10 +36,10 @@ export default function Item({
         <h2 className="mb-[24px] text-overline uppercase text-primary-300 opacity-50 md:mb-[16px]">
           New product
         </h2>
-        <h1 className="mdmb-[32px] mb-[24px] text-h4 uppercase text-black/50 md:text-h2">
+        <h1 className="mb-[24px] text-h4 uppercase text-black/50 md:mb-[32px] md:text-h2">
           {name}
         </h1>
-        <p className="mdmb-[40px] mb-[24px] text-body text-black/50 opacity-75">
+        <p className="mb-[24px] text-body text-black/50 opacity-75 md:mb-[40px]">
           {description}
         </p>
         <Link href={`../product/${slug}`}>

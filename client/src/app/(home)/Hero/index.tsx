@@ -1,5 +1,6 @@
 import Button from '@/components/Button'
 import Image from 'next/image'
+import Link from 'next/link'
 
 // Functional Component
 export default function Hero() {
@@ -18,7 +19,9 @@ export default function Hero() {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
-          <Button text="See product" type="primary" />
+          <Link href={`../product/produto-novo`}>
+            <Button text="See product" type="primary" />
+          </Link>
         </div>
         <div className="col-start-1 row-start-1 flex w-full justify-center md:col-start-2 md:justify-end">
           <Image
