@@ -6,14 +6,15 @@ export default function Likeable() {
   // Rendering
   return (
     <div className="mb-[160px]">
-      <h3 className="pb-[64px] text-center text-h3 uppercase">
+      <h3 className="pb-[40px] text-center text-h6 uppercase md:pb-[64px] md:text-h3">
         you may also like
       </h3>
-      <div className="grid gap-[30px] md:grid-cols-3">
+      <div className="grid gap-[56px] md:grid-cols-3 md:gap-[30px]">
         {/* Item */}
         <div className="flex flex-col items-center">
-          <div className="mb-[40px] grid w-full place-items-center rounded-[8px] bg-neutral-600 py-[62px]">
+          <div className="mb-[32px] grid w-full place-items-center rounded-[8px] bg-neutral-600 py-[12px] md:mb-[40px] md:py-[62px]">
             <Image
+              className="h-auto w-[73px] md:w-[148px]"
               src="https://imgur.com/feZo8rr.png"
               alt="Headphone"
               width={148}
@@ -25,8 +26,9 @@ export default function Likeable() {
         </div>
         {/* Item */}
         <div className="flex flex-col items-center">
-          <div className="mb-[40px] grid w-full place-items-center rounded-[8px] bg-neutral-600 py-[62px]">
+          <div className="mb-[32px] grid w-full place-items-center rounded-[8px] bg-neutral-600 py-[12px] md:mb-[40px] md:py-[62px]">
             <Image
+              className="h-auto w-[73px] md:w-[148px]"
               src="https://imgur.com/feZo8rr.png"
               alt="Headphone"
               width={148}
@@ -38,8 +40,9 @@ export default function Likeable() {
         </div>
         {/* Item */}
         <div className="flex flex-col items-center">
-          <div className="mb-[40px] grid w-full place-items-center rounded-[8px] bg-neutral-600 py-[62px]">
+          <div className="mb-[32px] grid w-full place-items-center rounded-[8px] bg-neutral-600 py-[12px] md:mb-[40px] md:py-[62px]">
             <Image
+              className="h-auto w-[73px] md:w-[148px]"
               src="https://imgur.com/feZo8rr.png"
               alt="Headphone"
               width={148}

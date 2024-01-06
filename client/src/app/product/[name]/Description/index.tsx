@@ -2,9 +2,11 @@
 export default function Description() {
   // Rendering
   return (
-    <div className="grid grid-cols-description gap-[125px] md:pb-[160px]">
+    <div className="grid gap-[88px] pb-[88px] md:grid-cols-description md:gap-[125px] md:pb-[160px] ">
       <div>
-        <h2 className="text-h3 uppercase md:mb-[32px]">Features</h2>
+        <h2 className="pb-[24px] text-h6 uppercase md:mb-[32px] md:text-h3">
+          Features
+        </h2>
         <p className="mb-[30px] text-body opacity-50">
           Featuring a genuine leather head strap and premium earcups, these
           headphones deliver superior comfort for those who like to enjoy
@@ -23,7 +25,9 @@ export default function Description() {
         </p>
       </div>
       <div>
-        <h2 className="text-h3 uppercase md:mb-[32px]">In the box</h2>
+        <h2 className="pb-[24px] text-h6 uppercase md:mb-[32px] md:text-h3">
+          In the box
+        </h2>
         <ul className="flex flex-col gap-[8px]">
           <li className="flex gap-[21px]">
             <span className="text-body text-primary">1x</span>

@@ -5,7 +5,7 @@ import Image from 'next/image'
 export default function Overview() {
   // Rendering
   return (
-    <div className="grid items-center gap-[32px] text-center md:mb-[140px] md:grid-cols-2 md:gap-[125px] md:text-left">
+    <div className="mb-[88px] grid items-center gap-[32px] md:mb-[140px] md:grid-cols-2 md:gap-[125px] md:text-left">
       <div className="grid w-full items-center justify-center bg-neutral-600 pb-[108px] pt-[65px]">
         <Image
           className="aspect-square h-auto w-full md:aspect-auto md:w-[349px]"
@@ -15,7 +15,7 @@ export default function Overview() {
           height={386}
         />
       </div>
-      <div className="flex max-w-[445px] flex-col items-center md:block">
+      <div className="flex max-w-[445px] flex-col md:block md:items-center">
         <h2 className="mb-[24px] text-overline uppercase text-primary-300 opacity-50 md:mb-[16px]">
           New product
         </h2>

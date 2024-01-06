@@ -9,7 +9,7 @@ import Photos from './Photos'
 export default function Product() {
   // Rendering
   return (
-    <main className="container pt-[79px]">
+    <main className="container pt-[16px] md:pt-[79px]">
       <GoBackBtn />
       <Overview />
       <Description />

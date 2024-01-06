@@ -4,7 +4,7 @@ import Image from 'next/image'
 export default function Photos() {
   // Rendering
   return (
-    <div className="mb-[160px] grid grid-cols-photos grid-rows-2 gap-[30px]">
+    <div className="mb-[120px] grid grid-rows-2 gap-[30px] md:mb-[160px] md:grid-cols-photos">
       <Image
         className="h-full w-full object-cover"
         src="https://imgur.com/KnYU9Sm.png"

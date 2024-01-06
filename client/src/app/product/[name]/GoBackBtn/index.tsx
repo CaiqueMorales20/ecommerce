@@ -8,7 +8,7 @@ export default function GoBackBtn() {
 
   // Rendering
   return (
-    <button className="mb-[56px]" onClick={() => router.back()}>
+    <button className="mb-[24px] md:mb-[56px]" onClick={() => router.back()}>
       Go back
     </button>
   )
