@@ -2,7 +2,7 @@
 export default function Description() {
   // Rendering
   return (
-    <div className="grid-cols-description grid gap-[125px] md:pb-[160px]">
+    <div className="grid grid-cols-description gap-[125px] md:pb-[160px]">
       <div>
         <h2 className="text-h3 uppercase md:mb-[32px]">Features</h2>
         <p className="mb-[30px] text-body opacity-50">
