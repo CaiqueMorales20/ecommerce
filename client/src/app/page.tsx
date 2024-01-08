@@ -1,7 +1,7 @@
-import Pitch from '@/components/Pitch'
+import Pitch from './(components)/Pitch'
+import Showcase from './(components)/Showcase'
 import Ads from './(home)/Ads'
 import Hero from './(home)/Hero'
-import Showcase from '@/components/Showcase'
 
 export default function Home() {
   return (

@@ -1,9 +1,9 @@
-import Showcase from '@/components/Showcase'
+import Showcase from '@/app/(components)/Showcase'
 import Item from './Item'
-import Pitch from '@/components/Pitch'
 
 import { products } from '@/data/products'
 import React from 'react'
+import Pitch from '@/app/(components)/Pitch'
 
 // Functional Component
 export default function Category({ params }: { params: { name: string } }) {

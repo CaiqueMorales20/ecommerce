@@ -1,9 +1,9 @@
-import Pitch from '@/components/Pitch'
+import GoBackBtn from '@/app/(components)/GoBackBtn'
 import Description from './Description'
-import GoBackBtn from './GoBackBtn'
 import Likeable from './Likeable'
 import Overview from './Overview'
 import Photos from './Photos'
+import Pitch from '@/app/(components)/Pitch'
 
 // Functional Component
 export default function Product() {

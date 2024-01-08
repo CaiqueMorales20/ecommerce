@@ -1,8 +1,8 @@
-import Button from '@/components/Button'
 import Image from 'next/image'
 
 import { IProduct } from './types'
 import Link from 'next/link'
+import Button from '@/app/(components)/Button'
 
 // Functional Component
 export default function Item({

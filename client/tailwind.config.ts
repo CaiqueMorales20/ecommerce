@@ -103,6 +103,7 @@ const config: Config = {
         ad: '1fr 2fr',
         description: '3fr 1fr',
         photos: '2fr 3fr',
+        checkout: '2fr 1fr',
       },
     },
   },

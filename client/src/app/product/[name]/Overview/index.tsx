@@ -1,5 +1,6 @@
-import Button from '@/components/Button'
+import Button from '@/app/(components)/Button'
 import Image from 'next/image'
+import Link from 'next/link'
 
 // Functional Component
 export default function Overview() {
@@ -29,7 +30,9 @@ export default function Overview() {
         </p>
         <p className="mb-[47px] text-h6">$ 2,999</p>
         <div>
-          <Button text="Add to cart" type="primary" />
+          <Link href="/checkout">
+            <Button text="Add to cart" type="primary" />
+          </Link>
         </div>
       </div>
     </div>
