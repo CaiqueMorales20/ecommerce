@@ -8,6 +8,7 @@ export function useOnClickOutside<T extends HTMLElement = HTMLElement>(
   ref: RefObject<T>,
   handler: Handler,
   mouseEvent: 'mousedown' | 'mouseup' = 'mousedown',
+  condition = true, // Add a condition parameter
 ): void {
   useEventListener(mouseEvent, (event) => {
     const el = ref?.current
@@ -17,6 +18,6 @@ export function useOnClickOutside<T extends HTMLElement = HTMLElement>(
       return
     }
 
-    handler(event)
+    if (condition) handler(event)
   })
 }

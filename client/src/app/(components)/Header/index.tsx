@@ -5,22 +5,35 @@ import Link from 'next/link'
 
 import { useOnClickOutside } from '@/hooks/useOnClickOutside'
 import { useRef, useState } from 'react'
+import Cart from '../Cart'
 
 // Functional Component
 export default function Header() {
+  // Variables
   const [openedMenu, setOpenedMenu] = useState<boolean>(false)
+  const [openedCart, setOpenedCart] = useState<boolean>(false)
   const menuRef = useRef(null)
 
-  useOnClickOutside(menuRef, () => closeMenu())
+  useOnClickOutside(menuRef, () => closeMenu(), 'mousedown', openedMenu)
 
-  function closeMenu() {
-    document.body.classList.remove('menu-opened')
-    setOpenedMenu(false)
+  function openCart() {
+    document.body.classList.add('menu-opened')
+    setOpenedCart(true)
   }
 
-  function handleMenu() {
-    document.body.classList.toggle('menu-opened')
-    setOpenedMenu(!openedMenu)
+  function closeCart() {
+    if (!openedMenu) document.body.classList.remove('menu-opened')
+    setOpenedCart(false)
+  }
+
+  function openMenu() {
+    if (window.innerWidth < 768) document.body.classList.add('menu-opened')
+    setOpenedMenu(true)
+  }
+
+  function closeMenu() {
+    if (!openedCart) document.body.classList.remove('menu-opened')
+    setOpenedMenu(false)
   }
 
   // Rendering
@@ -29,7 +42,7 @@ export default function Header() {
       <nav className="container grid grid-cols-3">
         {/* Hamburger */}
         <Image
-          onClick={handleMenu}
+          onClick={openMenu}
           className="md:hidden"
           src="/icons/hamburger.svg"
           alt="Audiphile"
@@ -89,12 +102,14 @@ export default function Header() {
         </ul>
         {/* Cart */}
         <Image
-          className="justify-self-end"
+          onClick={openCart}
+          className="cursor-pointer justify-self-end"
           src="/icons/cart.svg"
           alt="Cart"
           width={24}
           height={20}
         />
+        <Cart openedMenu={openedCart} onRequestClose={closeCart} />
       </nav>
     </header>
   )
