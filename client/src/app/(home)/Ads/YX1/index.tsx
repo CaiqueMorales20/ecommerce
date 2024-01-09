@@ -19,7 +19,7 @@ export default function YX1() {
         <h2 className="mb-[24px] text-h4 text-dark md:text-h1">
           YX1 EARPHONES
         </h2>
-        <Button text="See product" type="secondary" />
+        <Button className="w-max" text="See product" type="secondary" />
       </div>
     </div>
   )

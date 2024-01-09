@@ -4,13 +4,14 @@ interface ButtonType {
   text: string
   type: 'primary' | 'secondary' | 'secondary-reverse' | 'tertiary'
   onClick?: () => void
+  className?: string
 }
 
 // Functional Component
-export default function Button({ text, type, onClick }: ButtonType) {
+export default function Button({ text, type, onClick, className }: ButtonType) {
   // Variables
   const baseVariation =
-    'flex w-max items-center gap-[13.3px] px-[30px] py-[15px] text-subtitle uppercase'
+    'flex justify-center items-center gap-[13.3px] px-[30px] py-[15px] text-subtitle uppercase'
   const variation1 =
     'solid border border-primary bg-primary text-white hover:border-primary-300 hover:bg-primary-300 duration-300'
   const variation2 =
@@ -34,7 +35,7 @@ export default function Button({ text, type, onClick }: ButtonType) {
   return (
     <button
       onClick={onClick}
-      className={baseVariation + ' ' + currentVarriation}
+      className={className + ' ' + baseVariation + ' ' + currentVarriation}
     >
       {text}
       {type === 'tertiary' && (

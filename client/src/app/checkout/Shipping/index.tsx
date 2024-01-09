@@ -5,7 +5,10 @@ import { useState } from 'react'
 
 // Functional Component
 export default function Shipping() {
-  const [name, setName] = useState('')
+  const [address, setAddress] = useState('')
+  const [zipCode, setZipCode] = useState('')
+  const [city, setCity] = useState('')
+  const [country, setCountry] = useState('')
 
   // Rendering
   return (
@@ -13,38 +16,38 @@ export default function Shipping() {
       <h2 className="col-span-2 mb-[16px] text-subtitle uppercase text-primary">
         Shipping Info
       </h2>
-      <div className="grid grid-cols-2 gap-x-[24px] gap-y-[16px]">
+      <div className="grid gap-x-[24px] gap-y-[16px] md:grid-cols-2">
         <Input
-          className="col-span-2"
+          className="md:col-span-2"
           name="Your address"
-          value={name}
+          value={address}
           placeholder="Rua Visconde de Inhaúma"
           onChange={(e: React.FormEvent<HTMLInputElement>) =>
-            setName(e.currentTarget.value)
+            setAddress(e.currentTarget.value)
           }
         />
         <Input
           name="ZIP Code"
-          value={name}
+          value={zipCode}
           placeholder="09011-110"
           onChange={(e: React.FormEvent<HTMLInputElement>) =>
-            setName(e.currentTarget.value)
+            setZipCode(e.currentTarget.value)
           }
         />
         <Input
           name="City"
-          value={name}
+          value={city}
           placeholder="São Caetano"
           onChange={(e: React.FormEvent<HTMLInputElement>) =>
-            setName(e.currentTarget.value)
+            setCity(e.currentTarget.value)
           }
         />
         <Input
           name="Country"
-          value={name}
+          value={country}
           placeholder="Brazil"
           onChange={(e: React.FormEvent<HTMLInputElement>) =>
-            setName(e.currentTarget.value)
+            setCountry(e.currentTarget.value)
           }
         />
       </div>
