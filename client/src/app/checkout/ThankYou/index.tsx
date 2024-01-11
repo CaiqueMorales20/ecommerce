@@ -28,7 +28,7 @@ export default function ThankYou({ openedMenu, onRequestClose }: IThankYou) {
   return (
     <div
       ref={menuRef}
-      className={`fixed inset-0 -z-10 m-auto h-max w-[90%] max-w-[1440px] rounded-[8px] bg-white p-20 opacity-0 duration-300 md:w-max ${
+      className={`fixed inset-0 -z-10 m-auto h-max w-[90%] max-w-[1440px] rounded-[8px] bg-white p-[32px] opacity-0 duration-300 md:w-max md:p-20 ${
         isMenuOpened ? 'z-30 opacity-100' : '-z-10 opacity-0'
       }`}
     >
