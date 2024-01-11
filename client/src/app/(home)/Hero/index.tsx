@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default function Hero() {
   // Rendering
   return (
-    <section className="-mt-[96px] mb-[92px] h-[70vh] overflow-hidden bg-[#131313] pt-[96px]  md:mb-[200px] md:h-screen">
+    <section className="-mt-[96px] mb-[92px] h-[70vh] overflow-hidden bg-[#131313] pt-[96px]  md:mb-[200px] md:h-[100vh]">
       <div className="container relative grid h-full place-items-center items-center border-t-[1px] border-solid border-[#979797] border-opacity-20 md:grid-cols-2">
         <div className="absolute col-start-1 row-start-1 flex max-w-[328px] flex-col items-center justify-center md:static md:block md:w-full md:max-w-full md:justify-start">
           <h2 className="mb-[24px] text-center text-overline uppercase text-white opacity-50 md:text-left">

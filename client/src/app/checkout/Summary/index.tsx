@@ -1,8 +1,12 @@
 import Button from '@/app/(components)/Button'
 import Item from './Item'
 
+type ISummary = {
+  onFinish: () => void
+}
+
 // Functional Component
-export default function Summary() {
+export default function Summary({ onFinish }: ISummary) {
   // Rendering
   return (
     <div>
@@ -35,7 +39,12 @@ export default function Summary() {
         <span className="text-h6 text-primary">$ 5,446</span>
       </div>
       {/* Finish */}
-      <Button className="w-full" text="Continue & Pay" type="primary" />
+      <Button
+        onClick={onFinish}
+        className="w-full"
+        text="Continue & Pay"
+        type="primary"
+      />
     </div>
   )
 }

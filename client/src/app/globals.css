@@ -33,6 +33,12 @@ body.menu-opened::after{
   transition: opacity 0.3s, z-index 0s; 
 }
 
+body.cart-opened::after{
+  z-index: 20;
+  opacity: 1;
+  transition: opacity 0.3s, z-index 0s; 
+}
+
 .container{
   width: min(90%, 1440px);
   margin: 0 auto;

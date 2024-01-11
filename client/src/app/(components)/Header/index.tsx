@@ -17,12 +17,12 @@ export default function Header() {
   useOnClickOutside(menuRef, () => closeMenu(), 'mousedown', openedMenu)
 
   function openCart() {
-    document.body.classList.add('menu-opened')
+    document.body.classList.add('cart-opened')
     setOpenedCart(true)
   }
 
   function closeCart() {
-    if (!openedMenu) document.body.classList.remove('menu-opened')
+    if (!openedMenu) document.body.classList.remove('cart-opened')
     setOpenedCart(false)
   }
 

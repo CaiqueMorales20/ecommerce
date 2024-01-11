@@ -27,7 +27,7 @@ export default function Cart({ openedMenu, onRequestClose }: ICart) {
   // Rendering
   return (
     <div
-      className={`fixed top-[126px] w-[90%] max-w-[1440px] duration-300 ${
+      className={`absolute top-[126px] w-[90%] max-w-[1440px] duration-300 ${
         isMenuOpened ? ' z-30 opacity-100' : '-z-10 opacity-0'
       }`}
     >
