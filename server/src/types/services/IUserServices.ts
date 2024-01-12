@@ -1,4 +1,4 @@
-import User from "../tables/IUser";
+import { User } from "@prisma/client"
 
 interface IUserService {
   getAllUser(): Promise<User[]>

@@ -17,6 +17,8 @@ model User {
   address     String?
   city        String?
   country     String?
+  createdAt  DateTime
+  updatedAt  DateTime
   creditCards CreditCard[]
   orders      Order[]
 }
@@ -24,9 +26,10 @@ model User {
 model CreditCard {
   cardId         Int      @id @default(autoincrement())
   userId         Int
+  name           String
   cardNumber     String
   cardHolder     String
-  expirationDate DateTime
+  expirationDate String
   cvv            String
   billingAddress String
   user           User     @relation(fields: [userId], references: [id])
@@ -58,12 +61,25 @@ model OrderItem {
 
 model Product {
   productId     Int         @id @default(autoincrement())
+  categoryId    Int         
   name          String
   description   String
+  image         String
   price         Float
   slug          String
   stockQuantity Int
+  createdAt     DateTime
+  updatedAt     DateTime
   orderItems    OrderItem[]
+  category      Category    @relation(fields: [categoryId], references: [categoryId])
+}
+
+model Category {
+  categoryId    Int         @id @default(autoincrement())
+  name          String
+  slug          String
+  createdAt     DateTime
+  product       Product[]
 }
 
 model ShippingInfo {

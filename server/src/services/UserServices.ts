@@ -1,6 +1,6 @@
+import { User } from "@prisma/client";
 import { prisma } from "../db/script";
 import IUserService from "../types/services/IUserServices";
-import User from "../types/tables/IUser";
 
 class UserServices implements IUserService {
   async getAllUser(): Promise<User[]> {
@@ -28,7 +28,9 @@ class UserServices implements IUserService {
       const user = await prisma.user.create({
         data: {
           name,
-          email
+          email,
+          createdAt: new Date(),
+          updatedAt: new Date()
         }
       })
       return user

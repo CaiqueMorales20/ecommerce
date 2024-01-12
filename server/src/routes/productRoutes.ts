@@ -1,5 +1,5 @@
 import express, {Request, Response} from "express";
-import ProductServices from "../services/ProductService";
+import ProductServices from "../services/ProductServices";
 
 const productRouter = express.Router()
 const productService = new ProductServices()
@@ -25,22 +25,23 @@ productRouter.get('/:id', async (req: Request, res: Response) => {
 })
 
 productRouter.post('/', async (req: Request, res: Response) => {
-  const {name, description, price, slug, stockQuantity} = req.body
+  const {name, categoryId, description, image, price, slug, stockQuantity} = req.body
 
   try {
-    const product = await productService.createProduct(name, description, price, slug, stockQuantity)
+    const product = await productService.createProduct(categoryId, name, description, image, price, slug, stockQuantity)
     res.send(product).status(200)
   } catch(err) {
+    console.log(err)
     res.send(err).status(400)
   }
 })
 
 productRouter.patch('/:id', async (req: Request, res: Response) => {
   const id = parseInt(req.params.id)
-  const {name, description, price, slug, stockQuantity} = req.body
+  const {categoryId, name, description, image, price, slug, stockQuantity} = req.body
 
   try {
-    const product = await productService.updateProduct(id, name, description, price, slug, stockQuantity)
+    const product = await productService.updateProduct(id, name, categoryId, description, image, price, slug, stockQuantity)
     res.send(product).status(200)
   } catch(err) {
     res.send(err).status(400)
