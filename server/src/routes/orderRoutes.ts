@@ -26,10 +26,10 @@ orderRouter.get('/:id', async (req: Request, res: Response) => {
 
 
 orderRouter.post('/', async (req: Request, res: Response) => {
-  const {userId, totalAmount, status, creditCardCardId, orderItems, shippingInfo} = req.body
+  const {userId, status, creditCardCardId, orderItems, shippingInfo} = req.body
 
   try {
-    const order = await orderService.createOrder(userId, totalAmount, status, creditCardCardId, orderItems, shippingInfo)
+    const order = await orderService.createOrder(userId, status, creditCardCardId, orderItems, shippingInfo)
     res.send(order).status(200)
   } catch(err) {
     res.send(err).status(400)

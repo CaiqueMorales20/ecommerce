@@ -24,6 +24,17 @@ productRouter.get('/:id', async (req: Request, res: Response) => {
   }
 })
 
+productRouter.get('/category/:name', async (req: Request, res: Response) => {
+  const name = req.params.name
+
+  try {
+    const product = await productService.getProductByCategory(name)
+    res.send(product).status(200)
+  } catch(err) {
+    res.send(err).status(400)
+  }
+})
+
 productRouter.post('/', async (req: Request, res: Response) => {
   const {name, categoryId, description, image, price, slug, stockQuantity} = req.body
 

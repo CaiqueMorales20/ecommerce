@@ -25,6 +25,27 @@ class ProductServices implements IProductService {
     }
   }
 
+  async getProductByCategory(name: string): Promise<Product[]> {
+
+    const allCategories = await prisma.category.findMany()
+
+    const category = allCategories.filter((category) => category.slug === name)
+
+    const currentCategory = category[0].categoryId
+
+
+    try {
+      const product = await prisma.product.findMany({
+        where: {categoryId: currentCategory}
+      })
+
+      if (!product) throw new Error('Product not found')
+      return product
+    } catch(err) {
+      throw err
+    }
+  }
+
   async createProduct(categoryId: number, name: string, description: string, image: string, price: number, slug: string, stockQuantity: number): Promise<Product> {
     try {
       const Product = await prisma.product.create({

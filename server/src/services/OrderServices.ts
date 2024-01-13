@@ -7,7 +7,7 @@ class OrderServices implements IOrderService {
     try {
       const orders = await prisma.order.findMany({
         include: {
-          CreditCard: true,
+          creditCard: true,
           orderItems: true,
           shippingInfo: true
         }
@@ -24,7 +24,7 @@ class OrderServices implements IOrderService {
         where: {orderId: id},
         include: {
           orderItems: true,
-          CreditCard: true
+          creditCard: true
         }
       })
 
@@ -35,7 +35,9 @@ class OrderServices implements IOrderService {
     }
   }
 
-  async createOrder(userId: number, totalAmount: number, status: string, creditCardCardId: number, orderItems: OrderItem[], shippingInfo: ShippingInfo): Promise<Order> {
+  async createOrder(userId: number, status: string, creditCardCardId: number, orderItems: OrderItem[], shippingInfo: ShippingInfo): Promise<Order> {
+    const totalAmount = orderItems.map(item => item.unitPrice * item.quantity).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
     try {
       const order = await prisma.order.create({
         data: {
