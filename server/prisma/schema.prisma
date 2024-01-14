@@ -78,6 +78,7 @@ model Category {
   categoryId    Int         @id @default(autoincrement())
   name          String
   slug          String
+  icon          String
   createdAt     DateTime
   product       Product[]
 }
