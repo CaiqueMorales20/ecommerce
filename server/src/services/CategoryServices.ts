@@ -25,12 +25,13 @@ class CategoryServices implements ICategoryService {
     }
   }
 
-  async createCategory(name: string, slug: string): Promise<Category> {
+  async createCategory(name: string, slug: string, icon: string): Promise<Category> {
     try {
       const Category = await prisma.category.create({
         data: {
           name,
           slug,
+          icon,
           createdAt: new Date(),
         }
       })
@@ -40,13 +41,14 @@ class CategoryServices implements ICategoryService {
     }
   }
 
-  async updateCategory(id: number, name: string, slug: string): Promise<Category> {
+  async updateCategory(id: number, name: string, slug: string, icon: string): Promise<Category> {
     try {
       const Category = prisma.category.update({
         where: {categoryId: id},
         data: {
           name,
           slug,
+          icon,
           createdAt: new Date(),
         }
       })

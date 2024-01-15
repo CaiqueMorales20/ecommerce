@@ -25,10 +25,10 @@ categoryRouter.get('/:id', async (req: Request, res: Response) => {
 })
 
 categoryRouter.post('/', async (req: Request, res: Response) => {
-  const {name, slug} = req.body
+  const {name, slug, icon} = req.body
 
   try {
-    const category = await categoryService.createCategory(name, slug)
+    const category = await categoryService.createCategory(name, slug, icon)
     res.send(category).status(200)
   } catch(err) {
     res.send(err).status(400)
@@ -37,10 +37,10 @@ categoryRouter.post('/', async (req: Request, res: Response) => {
 
 categoryRouter.patch('/:id', async (req: Request, res: Response) => {
   const id = parseInt(req.params.id)
-  const {name, slug} = req.body
+  const {name, slug, icon} = req.body
 
   try {
-    const category = await categoryService.updateCategory(id, name, slug)
+    const category = await categoryService.updateCategory(id, name, slug, icon)
     res.send(category).status(200)
   } catch(err) {
     res.send(err).status(400)
