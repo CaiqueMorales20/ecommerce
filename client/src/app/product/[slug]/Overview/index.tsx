@@ -1,23 +1,50 @@
 'use client'
 
 import Button from '@/app/(components)/Button'
+import { useProductContext } from '@/context'
+import { Product } from '@/types/product'
 import Image from 'next/image'
-import Link from 'next/link'
-
-type productInfo = {
-  image: string
-  name: string
-  description: string
-  price: number
-}
 
 // Functional Component
 export default function Overview({
-  image,
+  productId,
+  categoryId,
   name,
   description,
+  image,
   price,
-}: productInfo) {
+  slug,
+  stockQuantity,
+  createdAt,
+  updatedAt,
+}: Product) {
+  // Variables
+  const { addToCard } = useProductContext()
+
+  // Functions
+  function handleAddToCart() {
+    addToCard({
+      product: {
+        productId,
+        categoryId,
+        name,
+        description,
+        image,
+        price,
+        slug,
+        stockQuantity,
+        createdAt,
+        updatedAt,
+        quantity: 1,
+      },
+    })
+  }
+
+  const formattedPrice = price.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  })
+
   // Rendering
   return (
     <div className="mb-[88px] grid items-center gap-[32px] md:mb-[140px] md:grid-cols-2 md:gap-[125px] md:text-left">
@@ -40,11 +67,9 @@ export default function Overview({
         <p className="mb-[24px] text-body text-black/50 opacity-75 md:mb-[40px]">
           {description}
         </p>
-        <p className="mb-[47px] text-h6">$ {price}</p>
+        <p className="mb-[47px] text-h6">{formattedPrice}</p>
         <div>
-          <Link href="/checkout">
-            <Button text="Add to cart" type="primary" />
-          </Link>
+          <Button onClick={handleAddToCart} text="Add to cart" type="primary" />
         </div>
       </div>
     </div>

@@ -7,11 +7,16 @@ import Shipping from './Shipping'
 import Payment from './Payment'
 import Summary from './Summary'
 import ThankYou from './ThankYou'
+import { useProductContext } from '@/context'
+import { redirect } from 'next/navigation'
 
 // Functional Component
 export default function Checkout() {
   const [isThankYouModalOpened, setIsThankYouModalOpened] =
     useState<boolean>(false)
+  const { cart, clearCart } = useProductContext()
+
+  if (cart.length < 1) redirect('/')
 
   function openThankYouModal() {
     document.body.classList.add('menu-opened')
@@ -21,6 +26,8 @@ export default function Checkout() {
   function closeThankYouModal() {
     document.body.classList.remove('menu-opened')
     setIsThankYouModalOpened(false)
+    clearCart()
+    redirect('/')
   }
 
   // Rendering

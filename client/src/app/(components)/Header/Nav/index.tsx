@@ -8,12 +8,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
 import Cart from '../../Cart'
+import { useProductContext } from '@/context'
 
 // Functional Component
 export default function Nav({ categories }: { categories: Category[] }) {
   // Variables
   const [openedMenu, setOpenedMenu] = useState<boolean>(false)
   const [openedCart, setOpenedCart] = useState<boolean>(false)
+  const { cart } = useProductContext()
 
   const menuRef = useRef(null)
 
@@ -93,14 +95,19 @@ export default function Nav({ categories }: { categories: Category[] }) {
         ))}
       </ul>
       {/* Cart */}
-      <Image
-        onClick={openCart}
-        className="cursor-pointer justify-self-end"
-        src="/icons/cart.svg"
-        alt="Cart"
-        width={24}
-        height={20}
-      />
+      <div className="relative flex gap-1 justify-self-end">
+        <Image
+          onClick={openCart}
+          className="cursor-pointer "
+          src="/icons/cart.svg"
+          alt="Cart"
+          width={24}
+          height={20}
+        />
+        <p className="absolute right-0 top-0 flex aspect-square h-auto w-[1.5rem] -translate-y-1/2 translate-x-[70%] items-center justify-center rounded-full bg-white text-center text-sm">
+          {cart?.length}
+        </p>
+      </div>
       <Cart openedMenu={openedCart} onRequestClose={closeCart} />
     </nav>
   )

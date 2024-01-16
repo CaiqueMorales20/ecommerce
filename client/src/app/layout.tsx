@@ -4,6 +4,7 @@ import './globals.css'
 import Header from './(components)/Header'
 import Footer from './(components)/Footer'
 import Provider from '@/utils/QueryProvider'
+import ContextProvider from '@/context'
 
 const manrope = Manrope({ subsets: ['latin'] })
 
@@ -20,10 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={manrope.className}>
-        <Provider>
-          <Header />
-          {children}
-        </Provider>
+        <ContextProvider>
+          <Provider>
+            <Header />
+            {children}
+          </Provider>
+        </ContextProvider>
         <Footer />
       </body>
     </html>

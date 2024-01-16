@@ -1,7 +1,14 @@
+import { ProductWithQuantity } from '@/context/types'
 import Image from 'next/image'
 
 // Functional Component
-export default function Item() {
+export default function Item(product: ProductWithQuantity) {
+  const price = product.price * product.quantity
+  const formattedPrice = price.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  })
+
   // Rendering
   return (
     <div className="flex items-center gap-[16px]">
@@ -16,10 +23,10 @@ export default function Item() {
       </div>
       <div className="flex-1">
         <div className="flex w-full justify-between">
-          <h5 className="text-body font-bold">XX99 MK II</h5>
-          <span className="text-body opacity-50">x1</span>
+          <h5 className="text-body font-bold">{product.name}</h5>
+          <span className="text-body opacity-50">x{product.quantity}</span>
         </div>
-        <h6 className="text-subtitle opacity-50">$ 2,999</h6>
+        <h6 className="text-subtitle opacity-50">{formattedPrice}</h6>
       </div>
     </div>
   )

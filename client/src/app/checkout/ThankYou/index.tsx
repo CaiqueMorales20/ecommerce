@@ -1,9 +1,9 @@
 'use client'
 
 import Button from '@/app/(components)/Button'
+import { useProductContext } from '@/context'
 import { useOnClickOutside } from '@/hooks/useOnClickOutside'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
 type IThankYou = {
@@ -16,7 +16,14 @@ export default function ThankYou({ openedMenu, onRequestClose }: IThankYou) {
   // Variables
   const [isMenuOpened, setIsMenuOpened] = useState(false)
   const menuRef = useRef(null)
-  const router = useRouter()
+  const { cart } = useProductContext()
+  const totalValue = cart
+    ?.map((item) => item.price)
+    .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+  const formattedTotal = totalValue?.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  })
 
   useOnClickOutside(menuRef, () => onRequestClose(), 'mousedown', isMenuOpened)
 
@@ -55,36 +62,44 @@ export default function ThankYou({ openedMenu, onRequestClose }: IThankYou) {
             <div className="rounded-[8px] bg-[#f1f1f1] px-[13px] py-[12px]">
               <Image
                 className="aspect-square h-auto w-[28px] max-w-[64px] md:aspect-auto md:w-full"
-                src="https://imgur.com/ddxQsoO.png"
-                alt="Product"
+                src={cart[0].image}
+                alt={cart[0].name}
                 width={349}
                 height={386}
               />
             </div>
             <div className="flex-1">
               <div className="flex w-full justify-between md:gap-[42px]">
-                <h5 className="text-body font-bold">XX99 MK II</h5>
-                <span className="text-body opacity-50">x1</span>
+                <h5 className="text-body font-bold">{cart[0].name}</h5>
+                <span className="text-body opacity-50">
+                  x{cart[0].quantity}
+                </span>
               </div>
-              <h6 className="text-subtitle opacity-50">$ 2,999</h6>
+              <h6 className="text-subtitle opacity-50">
+                {cart[0].price.toLocaleString('en-US', {
+                  style: 'currency',
+                  currency: 'USD',
+                })}
+              </h6>
             </div>
           </div>
-          <h6 className="pt-[12px] text-center text-subtitle opacity-50">
-            and 2 other item(s)
-          </h6>
+          {cart.length - 1 !== 0 && (
+            <h6 className="pt-[12px] text-center text-subtitle opacity-50">
+              and {cart.length - 1} other item(s)
+            </h6>
+          )}
         </div>
         {/* Total */}
         <div className="flex flex-col justify-center gap-[8px] bg-black pb-[19px] pl-[32px] pr-[66px] pt-[15px]">
           <h5 className="text-body uppercase text-white opacity-50">
             GRAND TOTAL
           </h5>
-          <h6 className="text-h6 text-white">$ 5,446</h6>
+          <h6 className="text-h6 text-white">{formattedTotal}</h6>
         </div>
       </div>
       {/* Button */}
       <Button
         onClick={() => {
-          router.push('/')
           onRequestClose()
         }}
         className="w-full"
