@@ -1,17 +1,25 @@
+'use client'
+
 import Image from 'next/image'
 
-import { IProduct } from './types'
-import Link from 'next/link'
 import Button from '@/app/(components)/Button'
+import { Product } from '@/types/product'
+import { useRouter } from 'next/navigation'
 
 // Functional Component
 export default function Item({
   name,
   description,
-  photoPath,
-  reversed,
+  image,
   slug,
-}: IProduct & { reversed: boolean }) {
+  reversed,
+}: Product & { reversed: boolean }) {
+  const router = useRouter()
+
+  async function handleSeeProduct() {
+    router.push(`../product/${slug}`)
+  }
+
   // Rendering
   return (
     <div className="grid items-center gap-[32px] text-center md:grid-cols-2 md:gap-[125px] md:pt-[160px] md:text-left">
@@ -22,7 +30,7 @@ export default function Item({
       >
         <Image
           className="aspect-square h-auto w-full md:w-[349px]"
-          src={photoPath}
+          src={image}
           alt={name}
           width={349}
           height={386}
@@ -42,9 +50,7 @@ export default function Item({
         <p className="mb-[24px] text-body text-black/50 opacity-75 md:mb-[40px]">
           {description}
         </p>
-        <Link href={`../product/${slug}`}>
-          <Button text="See product" type="primary" />
-        </Link>
+        <Button onClick={handleSeeProduct} text="See product" type="primary" />
       </div>
     </div>
   )

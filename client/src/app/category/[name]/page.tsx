@@ -1,12 +1,17 @@
-import Showcase from '@/app/(components)/Showcase'
-import Item from './Item'
-
-import { products } from '@/data/products'
 import React from 'react'
+import ProductList from './ProductList'
+import Showcase from '@/app/(components)/Showcase'
 import Pitch from '@/app/(components)/Pitch'
+import { getProductByCategory } from '@/utils/server/getProductByCategory'
 
 // Functional Component
-export default function Category({ params }: { params: { name: string } }) {
+export default async function Category({
+  params,
+}: {
+  params: { name: string }
+}) {
+  const products = await getProductByCategory({ category: params.name })
+
   // Rendering
   return (
     <main className="bg-white">
@@ -20,24 +25,7 @@ export default function Category({ params }: { params: { name: string } }) {
       </div>
       {/* Body */}
       <div className="container">
-        <div className="flex flex-col gap-[120px] pb-[220px] pt-[64px] md:block md:pt-0">
-          {products.map((product, index) => {
-            if (product.category === params.name) {
-              return (
-                <Item
-                  name={product.name}
-                  description={product.description}
-                  photoPath={product.photoPath}
-                  slug={product.slug}
-                  category={product.category}
-                  reversed={index % 2 !== 0}
-                  key={index}
-                />
-              )
-            }
-            return <React.Fragment key={index}></React.Fragment>
-          })}
-        </div>
+        <ProductList products={products} />
         <Showcase />
         <Pitch />
       </div>

@@ -1,4 +1,4 @@
-import { getCategories } from '@/utils/getCategories'
+import { getCategories } from '@/utils/server/getCategories'
 import CategoryList from './CategoryList'
 
 // Functional Component

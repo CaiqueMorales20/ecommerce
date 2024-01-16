@@ -24,6 +24,17 @@ productRouter.get('/:id', async (req: Request, res: Response) => {
   }
 })
 
+productRouter.get('/slug/:slug', async (req: Request, res: Response) => {
+  const slug = req.params.slug
+
+  try {
+    const product = await productService.getProductBySlug(slug)
+    res.send(product).status(200)
+  } catch(err) {
+    res.send(err).status(400)
+  }
+})
+
 productRouter.get('/category/:name', async (req: Request, res: Response) => {
   const name = req.params.name
 

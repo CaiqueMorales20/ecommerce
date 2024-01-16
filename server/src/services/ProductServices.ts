@@ -25,6 +25,24 @@ class ProductServices implements IProductService {
     }
   }
 
+  async getProductBySlug(slug: string): Promise<Product> {
+
+    const allProducts = await prisma.product.findMany()
+
+    const currentProduct = allProducts.filter((product) => product.slug === slug)
+
+    try {
+      const product = await prisma.product.findUnique({
+        where: {productId: currentProduct[0].productId}
+      })
+
+      if (!product) throw new Error('Product not found')
+      return product
+    } catch(err) {
+      throw err
+    }
+  }
+
   async getProductByCategory(name: string): Promise<Product[]> {
 
     const allCategories = await prisma.category.findMany()

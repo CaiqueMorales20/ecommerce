@@ -28,6 +28,11 @@ export default function CategoryItem({ name, slug, icon }: ICategoryItem) {
         text="shop"
         type="tertiary"
       />
+      {/* <Button
+        onClick={() => window.location.replace(`/category/${slug}`)}
+        text="shop"
+        type="tertiary"
+      /> */}
     </div>
   )
 }

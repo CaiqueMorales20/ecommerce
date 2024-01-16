@@ -1,9 +1,13 @@
 import Button from '@/app/(components)/Button'
+import { getProducts } from '@/utils/server/getProducts'
 import Image from 'next/image'
 import Link from 'next/link'
 
 // Functional Component
-export default function Hero() {
+export default async function Hero() {
+  const products = await getProducts()
+  const lastProduct = products.reverse()[0]
+
   // Rendering
   return (
     <section className="-mt-[96px] mb-[92px] h-[70vh] overflow-hidden bg-[#131313] pt-[96px]  md:mb-[200px] md:h-[100vh]">
@@ -13,20 +17,19 @@ export default function Hero() {
             New product
           </h2>
           <h1 className="mb-[24px] text-center text-h2 uppercase text-white md:text-left md:text-h1">
-            XX99 Mark II HeadphoneS
+            {lastProduct.name}
           </h1>
           <p className="mb-[40px] text-center text-body text-white opacity-75 md:text-left">
-            Experience natural, lifelike audio and exceptional build quality
-            made for the passionate music enthusiast.
+            {lastProduct.description}
           </p>
-          <Link href={`../product/produto-novo`}>
+          <Link href={`../product/${lastProduct.slug}`}>
             <Button text="See product" type="primary" />
           </Link>
         </div>
         <div className="col-start-1 row-start-1 flex w-full justify-center md:col-start-2 md:justify-end">
           <Image
             className="h-auto max-w-[120%] md:max-w-full"
-            src="/image/hero-img.png"
+            src={lastProduct.image}
             alt="Hero"
             width={500}
             height={886}

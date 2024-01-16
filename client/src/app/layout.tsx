@@ -3,7 +3,7 @@ import { Manrope } from 'next/font/google'
 import './globals.css'
 import Header from './(components)/Header'
 import Footer from './(components)/Footer'
-import Provider from '@/utils/Provider'
+import Provider from '@/utils/QueryProvider'
 
 const manrope = Manrope({ subsets: ['latin'] })
 
@@ -23,8 +23,8 @@ export default function RootLayout({
         <Provider>
           <Header />
           {children}
-          <Footer />
         </Provider>
+        <Footer />
       </body>
     </html>
   )

@@ -1,17 +1,31 @@
+'use client'
+
 import Button from '@/app/(components)/Button'
 import Image from 'next/image'
 import Link from 'next/link'
 
+type productInfo = {
+  image: string
+  name: string
+  description: string
+  price: number
+}
+
 // Functional Component
-export default function Overview() {
+export default function Overview({
+  image,
+  name,
+  description,
+  price,
+}: productInfo) {
   // Rendering
   return (
     <div className="mb-[88px] grid items-center gap-[32px] md:mb-[140px] md:grid-cols-2 md:gap-[125px] md:text-left">
       <div className="grid w-full items-center justify-center bg-neutral-600 pb-[108px] pt-[65px]">
         <Image
           className="aspect-square h-auto w-full md:aspect-auto md:w-[349px]"
-          src="https://imgur.com/ddxQsoO.png"
           alt="dasdas"
+          src={image}
           width={349}
           height={386}
         />
@@ -21,14 +35,12 @@ export default function Overview() {
           New product
         </h2>
         <h1 className="mb-[24px] text-h4 uppercase text-black/50 md:mb-[32px] md:text-h2">
-          XX99 Mark II Headphones
+          {name}
         </h1>
         <p className="mb-[24px] text-body text-black/50 opacity-75 md:mb-[40px]">
-          The new XX99 Mark II headphones is the pinnacle of pristine audio. It
-          redefines your premium headphone experience by reproducing the
-          balanced depth and precision of studio-quality sound.
+          {description}
         </p>
-        <p className="mb-[47px] text-h6">$ 2,999</p>
+        <p className="mb-[47px] text-h6">$ {price}</p>
         <div>
           <Link href="/checkout">
             <Button text="Add to cart" type="primary" />
