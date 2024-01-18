@@ -1,7 +1,6 @@
 'use client'
 
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import React, { useState } from 'react'
 
 // Functional Component
@@ -14,9 +13,6 @@ export default function QueryProvider({
 
   // Rendering
   return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-      {children}
-    </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   )
 }

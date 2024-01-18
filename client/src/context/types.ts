@@ -4,12 +4,13 @@ type ProductWithQuantity = {
   quantity: number
 } & Product
 
-type ICart = ProductWithQuantity[]
-
 type IProductContext = {
-  cart: ICart
+  cart: ProductWithQuantity[]
   addToCard: ({ product }: { product: ProductWithQuantity }) => void
+  deleteItem: (idToDelete: number) => void
+  reduceItem: (idToReduce: number) => void
+  increaseItem: (idToIncrease: number) => void
   clearCart: () => void
 }
 
-export type { IProductContext, ICart, ProductWithQuantity }
+export type { IProductContext, ProductWithQuantity }

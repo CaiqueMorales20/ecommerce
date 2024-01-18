@@ -1,8 +1,12 @@
+'use client'
+
+import { useProductContext } from '@/context'
 import { ProductWithQuantity } from '@/context/types'
 import Image from 'next/image'
 
 // Functional Component
 export default function Item(product: ProductWithQuantity) {
+  const { reduceItem, increaseItem } = useProductContext()
   const price = product.price * product.quantity
   const formattedPrice = price.toLocaleString('en-US', {
     style: 'currency',
@@ -22,9 +26,25 @@ export default function Item(product: ProductWithQuantity) {
         />
       </div>
       <div className="flex-1">
-        <div className="flex w-full justify-between">
+        <div className="flex w-full justify-between gap-10">
           <h5 className="text-body font-bold">{product.name}</h5>
-          <span className="text-body opacity-50">x{product.quantity}</span>
+          <div className="flex items-center gap-1">
+            <span
+              className="cursor-pointer"
+              onClick={() => reduceItem(product.productId)}
+            >
+              {' '}
+              -{' '}
+            </span>
+            <span className="text-body opacity-50">{product.quantity}</span>
+            <span
+              className="cursor-pointer"
+              onClick={() => increaseItem(product.productId)}
+            >
+              {' '}
+              +{' '}
+            </span>
+          </div>
         </div>
         <h6 className="text-subtitle opacity-50">{formattedPrice}</h6>
       </div>

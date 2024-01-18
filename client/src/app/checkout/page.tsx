@@ -14,9 +14,7 @@ import { redirect } from 'next/navigation'
 export default function Checkout() {
   const [isThankYouModalOpened, setIsThankYouModalOpened] =
     useState<boolean>(false)
-  const { cart, clearCart } = useProductContext()
-
-  if (cart.length < 1) redirect('/')
+  const { clearCart } = useProductContext()
 
   function openThankYouModal() {
     document.body.classList.add('menu-opened')

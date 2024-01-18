@@ -31,6 +31,8 @@ export default function ThankYou({ openedMenu, onRequestClose }: IThankYou) {
     setIsMenuOpened(openedMenu)
   }, [openedMenu])
 
+  if (cart.length < 1) return
+
   // Rendering
   return (
     <div
