@@ -35,7 +35,7 @@ export default function Overview({
         stockQuantity,
         createdAt,
         updatedAt,
-        quantity: 3,
+        quantity: 1,
       },
     })
   }

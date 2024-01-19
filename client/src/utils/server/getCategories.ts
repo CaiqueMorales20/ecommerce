@@ -5,7 +5,6 @@ import { Category } from '@/types/category'
 export async function getCategories() {
   const response = await fetch('http:localhost:3333/categories', {
     method: 'GET',
-    cache: 'no-cache',
   })
 
   if (!response.ok) {

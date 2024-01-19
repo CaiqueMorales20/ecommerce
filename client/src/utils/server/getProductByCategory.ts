@@ -7,7 +7,6 @@ export async function getProductByCategory({ category }: { category: string }) {
     `http:localhost:3333/products/category/${category}`,
     {
       method: 'GET',
-      cache: 'no-cache',
     },
   )
 
