@@ -10,6 +10,10 @@
 
 - Next
 - Tailwind
+- Node.js
+- Typescript
+- Prisma
+- Postgres
   
 ## 👤 Authors
 - [Caique Morales](https://www.caiquemorales.com)
