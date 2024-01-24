@@ -4,11 +4,10 @@ import categoryRouter from "./routes/categoryRoutes"
 import creditCardRouter from "./routes/creditCardRoutes"
 import orderRouter from "./routes/orderRoutes"
 
-
 const cors = require('cors')
 const express = require('express')
 const app = express()
-const PORT = 3333
+const port = process.env.PORT || 8080
 
 app.use(express.json())
 app.use(cors())
@@ -21,5 +20,5 @@ app.use('/orders', orderRouter)
 
 app.listen({
   host: '0.0.0.0',
-  port: PORT
+  port: port
 })
