@@ -17,13 +17,6 @@ export default function ThankYou({ openedMenu, onRequestClose }: IThankYou) {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
   const menuRef = useRef(null)
   const { cart } = useProductContext()
-  const totalValue = cart
-    ?.map((item) => item.price)
-    .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
-  const formattedTotal = totalValue?.toLocaleString('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  })
 
   useOnClickOutside(menuRef, () => onRequestClose(), 'mousedown', isMenuOpened)
 
@@ -64,7 +57,7 @@ export default function ThankYou({ openedMenu, onRequestClose }: IThankYou) {
             <div className="rounded-[8px] bg-[#f1f1f1] px-[13px] py-[12px]">
               <Image
                 className="aspect-square h-auto w-[28px] max-w-[64px] md:aspect-auto md:w-full"
-                src={cart[0].image}
+                src={cart[0].images[0]}
                 alt={cart[0].name}
                 width={349}
                 height={386}
@@ -77,12 +70,7 @@ export default function ThankYou({ openedMenu, onRequestClose }: IThankYou) {
                   x{cart[0].quantity}
                 </span>
               </div>
-              <h6 className="text-subtitle opacity-50">
-                {cart[0].price.toLocaleString('en-US', {
-                  style: 'currency',
-                  currency: 'USD',
-                })}
-              </h6>
+              <h6 className="text-subtitle opacity-50">{cart[0].price}</h6>
             </div>
           </div>
           {cart.length - 1 !== 0 && (
@@ -96,7 +84,7 @@ export default function ThankYou({ openedMenu, onRequestClose }: IThankYou) {
           <h5 className="text-body uppercase text-white opacity-50">
             GRAND TOTAL
           </h5>
-          <h6 className="text-h6 text-white">{formattedTotal}</h6>
+          <h6 className="text-h6 text-white">100</h6>
         </div>
       </div>
       {/* Button */}

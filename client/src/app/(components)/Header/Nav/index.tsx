@@ -1,9 +1,6 @@
 'use client'
 
 import { useOnClickOutside } from '@/hooks/useOnClickOutside'
-import { Category } from '@/types/category'
-import { getCategoriesClient } from '@/utils/client/getCategoriesClient'
-import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
@@ -11,7 +8,7 @@ import Cart from '../../Cart'
 import { useProductContext } from '@/context'
 
 // Functional Component
-export default function Nav({ categories }: { categories: Category[] }) {
+export default function Nav({ categories }: { categories: string[] }) {
   // Variables
   const [openedMenu, setOpenedMenu] = useState<boolean>(false)
   const [openedCart, setOpenedCart] = useState<boolean>(false)
@@ -20,12 +17,6 @@ export default function Nav({ categories }: { categories: Category[] }) {
   const menuRef = useRef(null)
 
   useOnClickOutside(menuRef, () => closeMenu(), 'mousedown', openedMenu)
-
-  const { data } = useQuery({
-    queryKey: ['categories'],
-    queryFn: getCategoriesClient,
-    initialData: categories,
-  })
 
   function openCart() {
     document.body.classList.add('cart-opened')
@@ -79,17 +70,13 @@ export default function Nav({ categories }: { categories: Category[] }) {
             Home
           </li>
         </Link>
-        {data.map((category: Category, index: number) => (
-          <Link
-            prefetch={false}
-            key={index}
-            href={`/category/${category.slug}`}
-          >
+        {categories.map((category: string, index: number) => (
+          <Link key={index} href={`/category/${category}`}>
             <li
               onClick={closeMenu}
               className="cursor-pointer text-nav uppercase text-dark duration-300 hover:text-primary-300 md:text-white"
             >
-              {category.name}
+              {category}
             </li>
           </Link>
         ))}

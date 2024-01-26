@@ -1,12 +1,12 @@
 import Button from '@/app/(components)/Button'
-import { getProducts } from '@/utils/server/getProducts'
+import { stripe } from '@/utils/stripe'
 import Image from 'next/image'
 import Link from 'next/link'
 
 // Functional Component
 export default async function Hero() {
-  const products = await getProducts()
-  const lastProduct = products.reverse()[0]
+  const products = await stripe.products.list()
+  const lastProduct = products.data[0]
 
   // Rendering
   return (
@@ -22,14 +22,14 @@ export default async function Hero() {
           <p className="mb-[40px] text-center text-body text-white opacity-75 md:text-left">
             {lastProduct.description}
           </p>
-          <Link href={`../product/${lastProduct.slug}`}>
+          <Link href={`../product/${lastProduct.id}`}>
             <Button text="See product" type="primary" />
           </Link>
         </div>
-        <div className="col-start-1 row-start-1 flex w-full justify-center md:col-start-2 md:justify-end">
+        <div className="col-start-1 row-start-1 flex w-full justify-center md:col-start-2 md:justify-center">
           <Image
-            className="h-auto max-w-[120%] md:max-w-full"
-            src={lastProduct.image}
+            className="h-auto max-w-[120%] md:w-[15rem]"
+            src={lastProduct.images[0]}
             alt="Hero"
             width={500}
             height={886}

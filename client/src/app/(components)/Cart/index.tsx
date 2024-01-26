@@ -17,13 +17,19 @@ export default function Cart({ openedMenu, onRequestClose }: ICart) {
   // Variables
   const { cart, clearCart } = useProductContext()
   const [isMenuOpened, setIsMenuOpened] = useState(openedMenu)
-  const totalValue = cart
-    ?.map((item) => item.price)
-    .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
-  const formattedTotal = totalValue?.toLocaleString('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  })
+  const [totalValue, setTotalValue] = useState(0)
+
+  useEffect(() => {
+    setTotalValue(
+      cart
+        ?.map((item) => {
+          const cleanedStr = item.price.replace(/[$,]/g, '')
+          const numericAmount = parseFloat(cleanedStr)
+          return numericAmount
+        })
+        .reduce((accumulator, currentValue) => accumulator + currentValue, 0),
+    )
+  }, [cart])
 
   const menuRef = useRef(null)
   const router = useRouter()
@@ -71,7 +77,7 @@ export default function Cart({ openedMenu, onRequestClose }: ICart) {
             {/* Total */}
             <div className="mb-[24px] flex justify-between">
               <h6 className="text-body uppercase opacity-50">Total</h6>
-              <span className="text-h6">{formattedTotal}</span>
+              <span className="text-h6">{totalValue}</span>
             </div>
             {/* Finish */}
             <Button

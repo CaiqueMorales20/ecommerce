@@ -1,9 +1,13 @@
-import { Product } from '@/types/product'
 import React from 'react'
 import Item from '../Item'
+import Stripe from 'stripe'
 
 // Functional Component
-export default function ProductList({ products }: { products: Product[] }) {
+export default function ProductList({
+  products,
+}: {
+  products: Stripe.Product[]
+}) {
   if (!products) return <></>
 
   // Rendering

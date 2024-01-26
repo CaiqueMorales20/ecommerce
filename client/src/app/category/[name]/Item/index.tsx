@@ -1,23 +1,22 @@
 'use client'
 
 import Image from 'next/image'
-
 import Button from '@/app/(components)/Button'
-import { Product } from '@/types/product'
 import { useRouter } from 'next/navigation'
+import Stripe from 'stripe'
 
 // Functional Component
 export default function Item({
   name,
   description,
-  image,
-  slug,
+  images,
+  id,
   reversed,
-}: Product & { reversed: boolean }) {
+}: Stripe.Product & { reversed: boolean }) {
   const router = useRouter()
 
   async function handleSeeProduct() {
-    router.push(`../product/${slug}`)
+    router.push(`../product/${id}`)
   }
 
   // Rendering
@@ -29,11 +28,11 @@ export default function Item({
         }`}
       >
         <Image
-          className="aspect-square h-auto w-full md:w-[349px]"
-          src={image}
+          className="mx-auto h-auto w-full md:w-[80%]"
+          src={images[0]}
           alt={name}
-          width={349}
-          height={386}
+          width={1000}
+          height={1000}
         />
       </div>
       <div

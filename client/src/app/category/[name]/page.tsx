@@ -2,7 +2,7 @@ import React from 'react'
 import ProductList from './ProductList'
 import Showcase from '@/app/(components)/Showcase'
 import Pitch from '@/app/(components)/Pitch'
-import { getProductByCategory } from '@/utils/server/getProductByCategory'
+import { stripe } from '@/utils/stripe'
 
 // Functional Component
 export default async function Category({
@@ -10,7 +10,9 @@ export default async function Category({
 }: {
   params: { name: string }
 }) {
-  const products = await getProductByCategory({ category: params.name })
+  const products = await stripe.products.search({
+    query: `active:'true' AND metadata['category']:'${params.name}'`,
+  })
 
   // Rendering
   return (
@@ -25,7 +27,7 @@ export default async function Category({
       </div>
       {/* Body */}
       <div className="container">
-        <ProductList products={products} />
+        <ProductList products={products.data} />
         <Showcase />
         <Pitch />
       </div>

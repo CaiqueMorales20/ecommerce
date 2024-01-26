@@ -1,9 +1,16 @@
-import { getCategories } from '@/utils/server/getCategories'
+import { stripe } from '@/utils/stripe'
 import CategoryList from './CategoryList'
 
 // Functional Component
 export default async function Showcase() {
-  const categories = await getCategories()
+  const products = await stripe.products.list()
+  const categories: string[] = []
+
+  products.data.forEach((product) => {
+    if (!categories.includes(product.metadata.category)) {
+      categories.push(product.metadata.category)
+    }
+  })
 
   // Rendering
   return (

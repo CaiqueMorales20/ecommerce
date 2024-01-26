@@ -1,15 +1,16 @@
-import { Product } from '@/types/product'
+import Stripe from 'stripe'
 
 type ProductWithQuantity = {
+  price: string
   quantity: number
-} & Product
+} & Stripe.Product
 
 type IProductContext = {
   cart: ProductWithQuantity[]
   addToCard: ({ product }: { product: ProductWithQuantity }) => void
-  deleteItem: (idToDelete: number) => void
-  reduceItem: (idToReduce: number) => void
-  increaseItem: (idToIncrease: number) => void
+  deleteItem: (idToDelete: string) => void
+  reduceItem: (idToReduce: string) => void
+  increaseItem: (idToIncrease: string) => void
   clearCart: () => void
 }
 

@@ -10,12 +10,10 @@ export default function ContextProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<ProductWithQuantity[]>([])
 
   function addToCard({ product }: { product: ProductWithQuantity }) {
-    const isProductAlreadyAdded = cart.some(
-      (item) => item.productId === product.productId,
-    )
+    const isProductAlreadyAdded = cart.some((item) => item.id === product.id)
 
     const newContent = cart.map((productExistent) => {
-      if (product.productId === productExistent.productId) {
+      if (product.id === productExistent.id) {
         return {
           ...productExistent,
           quantity: productExistent.quantity + 1,
@@ -31,9 +29,9 @@ export default function ContextProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  function reduceItem(idToReduce: number) {
+  function reduceItem(idToReduce: string) {
     const newCartContent = cart.map((product) => {
-      if (product.productId === idToReduce) {
+      if (product.id === idToReduce) {
         return { ...product, quantity: product.quantity - 1 }
       }
       return product
@@ -42,9 +40,9 @@ export default function ContextProvider({ children }: { children: ReactNode }) {
     setCart(newCartContent)
   }
 
-  function increaseItem(idToIncrease: number) {
+  function increaseItem(idToIncrease: string) {
     const newCartContent = cart.map((product) => {
-      if (product.productId === idToIncrease) {
+      if (product.id === idToIncrease) {
         return { ...product, quantity: product.quantity + 1 }
       }
       return product
@@ -53,9 +51,9 @@ export default function ContextProvider({ children }: { children: ReactNode }) {
     setCart(newCartContent)
   }
 
-  function deleteItem(idToDelete: number) {
+  function deleteItem(idToDelete: string) {
     const newCartContent = cart.filter((product) => {
-      return product.productId !== idToDelete
+      return product.id !== idToDelete
     })
 
     setCart(newCartContent)
@@ -89,5 +87,5 @@ export default function ContextProvider({ children }: { children: ReactNode }) {
   )
 }
 
-export const useProductContext = () =>
+export const useProductContext = (): IProductContext =>
   useContext(ProductContext) as IProductContext

@@ -8,13 +8,6 @@ import { useProductContext } from '@/context'
 export default function Summary({ onFinish }: { onFinish: () => void }) {
   // Variables
   const { cart } = useProductContext()
-  const totalValue = cart
-    ?.map((item) => item.price)
-    .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
-  const formattedTotal = totalValue?.toLocaleString('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  })
 
   // Rendering
   return (
@@ -44,7 +37,7 @@ export default function Summary({ onFinish }: { onFinish: () => void }) {
       {/* Grand Total */}
       <div className="mb-[32px] flex justify-between">
         <h6 className="text-body uppercase opacity-50">Grand Total</h6>
-        <span className="text-h6 text-primary">{formattedTotal}</span>
+        <span className="text-h6 text-primary">0</span>
       </div>
       {/* Finish */}
       <Button

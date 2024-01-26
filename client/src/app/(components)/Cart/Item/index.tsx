@@ -7,7 +7,10 @@ import Image from 'next/image'
 // Functional Component
 export default function Item(product: ProductWithQuantity) {
   const { reduceItem, increaseItem } = useProductContext()
-  const price = product.price * product.quantity
+
+  const cleanedStr = product.price.replace(/[$,]/g, '')
+  const numericAmount = parseFloat(cleanedStr)
+  const price = Number(numericAmount) * product.quantity
   const formattedPrice = price.toLocaleString('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -16,10 +19,10 @@ export default function Item(product: ProductWithQuantity) {
   // Rendering
   return (
     <div className="flex items-center gap-[16px]">
-      <div className="h-[64px] w-[64px] rounded-[8px] bg-[#f1f1f1] px-[13px] py-[12px]">
+      <div className="h-[64px] w-[64px] rounded-[8px] bg-[#f1f1f1] px-[8px] py-[8px]">
         <Image
-          className="aspect-square h-auto w-full md:aspect-auto"
-          src="https://imgur.com/ddxQsoO.png"
+          className="mx-auto h-full object-contain"
+          src={product.images[0]}
           alt="dasdas"
           width={349}
           height={386}
@@ -31,7 +34,7 @@ export default function Item(product: ProductWithQuantity) {
           <div className="flex items-center gap-1">
             <span
               className="cursor-pointer"
-              onClick={() => reduceItem(product.productId)}
+              onClick={() => reduceItem(product.id)}
             >
               {' '}
               -{' '}
@@ -39,7 +42,7 @@ export default function Item(product: ProductWithQuantity) {
             <span className="text-body opacity-50">{product.quantity}</span>
             <span
               className="cursor-pointer"
-              onClick={() => increaseItem(product.productId)}
+              onClick={() => increaseItem(product.id)}
             >
               {' '}
               +{' '}
