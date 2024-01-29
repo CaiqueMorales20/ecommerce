@@ -23,6 +23,7 @@
 - Typescript
 - Prisma
 - Postgres
+- Stripe
   
 ## 👤 Authors
 - [Caique Morales](https://www.caiquemorales.com)
