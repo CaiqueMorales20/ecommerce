@@ -3,11 +3,30 @@
 import Button from '@/app/(components)/Button'
 import Item from './Item'
 import { useProductContext } from '@/context'
+import { useEffect, useState } from 'react'
+import formatValue from '@/utils/formatValue'
 
 // Functional Component
 export default function Summary({ onFinish }: { onFinish: () => void }) {
   // Variables
   const { cart } = useProductContext()
+  const [totalValue, setTotalValue] = useState(0)
+
+  useEffect(() => {
+    const pricesArray = cart.map((item) => {
+      console.log(item.price)
+      const cleanedStr = item.price.replace(/[$,]/g, '')
+      const price = Number(cleanedStr) * item.quantity
+      return price
+    })
+
+    const currentTotal = pricesArray.reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0,
+    )
+
+    setTotalValue(currentTotal)
+  }, [cart])
 
   // Rendering
   return (
@@ -37,7 +56,7 @@ export default function Summary({ onFinish }: { onFinish: () => void }) {
       {/* Grand Total */}
       <div className="mb-[32px] flex justify-between">
         <h6 className="text-body uppercase opacity-50">Grand Total</h6>
-        <span className="text-h6 text-primary">0</span>
+        <span className="text-h6 text-primary">{formatValue(totalValue)}</span>
       </div>
       {/* Finish */}
       <Button

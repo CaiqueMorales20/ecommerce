@@ -3,6 +3,7 @@
 import Button from '@/app/(components)/Button'
 import { useProductContext } from '@/context'
 import { useOnClickOutside } from '@/hooks/useOnClickOutside'
+import formatValue from '@/utils/formatValue'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
@@ -15,10 +16,27 @@ type IThankYou = {
 export default function ThankYou({ openedMenu, onRequestClose }: IThankYou) {
   // Variables
   const [isMenuOpened, setIsMenuOpened] = useState(false)
+  const [totalValue, setTotalValue] = useState(0)
   const menuRef = useRef(null)
   const { cart } = useProductContext()
 
   useOnClickOutside(menuRef, () => onRequestClose(), 'mousedown', isMenuOpened)
+
+  useEffect(() => {
+    const pricesArray = cart.map((item) => {
+      console.log(item.price)
+      const cleanedStr = item.price.replace(/[$,]/g, '')
+      const price = Number(cleanedStr) * item.quantity
+      return price
+    })
+
+    const currentTotal = pricesArray.reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0,
+    )
+
+    setTotalValue(currentTotal)
+  }, [cart])
 
   useEffect(() => {
     setIsMenuOpened(openedMenu)
@@ -84,7 +102,7 @@ export default function ThankYou({ openedMenu, onRequestClose }: IThankYou) {
           <h5 className="text-body uppercase text-white opacity-50">
             GRAND TOTAL
           </h5>
-          <h6 className="text-h6 text-white">100</h6>
+          <h6 className="text-h6 text-white">{formatValue(totalValue)}</h6>
         </div>
       </div>
       {/* Button */}

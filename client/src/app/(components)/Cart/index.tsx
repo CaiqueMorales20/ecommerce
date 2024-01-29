@@ -6,6 +6,7 @@ import Item from './Item'
 import Button from '../Button'
 import { useRouter } from 'next/navigation'
 import { useProductContext } from '@/context'
+import formatValue from '@/utils/formatValue'
 
 type ICart = {
   openedMenu: boolean
@@ -20,15 +21,19 @@ export default function Cart({ openedMenu, onRequestClose }: ICart) {
   const [totalValue, setTotalValue] = useState(0)
 
   useEffect(() => {
-    setTotalValue(
-      cart
-        ?.map((item) => {
-          const cleanedStr = item.price.replace(/[$,]/g, '')
-          const numericAmount = parseFloat(cleanedStr)
-          return numericAmount
-        })
-        .reduce((accumulator, currentValue) => accumulator + currentValue, 0),
+    const pricesArray = cart.map((item) => {
+      console.log(item.price)
+      const cleanedStr = item.price.replace(/[$,]/g, '')
+      const price = Number(cleanedStr) * item.quantity
+      return price
+    })
+
+    const currentTotal = pricesArray.reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0,
     )
+
+    setTotalValue(currentTotal)
   }, [cart])
 
   const menuRef = useRef(null)
@@ -77,7 +82,7 @@ export default function Cart({ openedMenu, onRequestClose }: ICart) {
             {/* Total */}
             <div className="mb-[24px] flex justify-between">
               <h6 className="text-body uppercase opacity-50">Total</h6>
-              <span className="text-h6">{totalValue}</span>
+              <span className="text-h6">{formatValue(totalValue)}</span>
             </div>
             {/* Finish */}
             <Button

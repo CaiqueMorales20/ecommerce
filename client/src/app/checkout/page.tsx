@@ -8,13 +8,14 @@ import Payment from './Payment'
 import Summary from './Summary'
 import ThankYou from './ThankYou'
 import { useProductContext } from '@/context'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 // Functional Component
 export default function Checkout() {
   const [isThankYouModalOpened, setIsThankYouModalOpened] =
     useState<boolean>(false)
   const { clearCart } = useProductContext()
+  const router = useRouter()
 
   function openThankYouModal() {
     document.body.classList.add('menu-opened')
@@ -23,9 +24,9 @@ export default function Checkout() {
 
   function closeThankYouModal() {
     document.body.classList.remove('menu-opened')
-    setIsThankYouModalOpened(false)
     clearCart()
-    redirect('/')
+    setIsThankYouModalOpened(false)
+    router.push('/')
   }
 
   // Rendering
