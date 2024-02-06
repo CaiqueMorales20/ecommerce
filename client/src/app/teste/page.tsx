@@ -1,10 +1,10 @@
 import Stripe from 'stripe'
-import stripeConfig from '../../../config/stripe'
 import Image from 'next/image'
 
 // Functional Component
 export default async function Teste() {
-  const stripe = new Stripe(stripeConfig.secretKey)
+  if (!process.env.Stripe_SK) return
+  const stripe = new Stripe(process.env.Stripe_SK)
 
   const products = await stripe.products.list({
     expand: ['data.default_price'],

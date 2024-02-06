@@ -10,6 +10,7 @@ import Overview from './Overview'
 export default async function Product({ params }: { params: { id: string } }) {
   const product = await stripe.products.retrieve(params.id)
 
+  const images = product.metadata.images?.split('||')
   const price = await stripe.prices.retrieve(String(product.default_price))
   if (!price.unit_amount) return
 
@@ -24,8 +25,12 @@ export default async function Product({ params }: { params: { id: string } }) {
     <main className="container pt-[16px] md:pt-[79px]">
       <GoBackBtn />
       <Overview {...product} price={formattedAmount} />
-      <Description />
-      <Photos />
+      <Description
+        feature1={product.metadata.feature1}
+        feature2={product.metadata.feature2}
+        box={product.features}
+      />
+      {images?.length === 3 && <Photos images={images} />}
       <Likeable />
       <Pitch />
     </main>

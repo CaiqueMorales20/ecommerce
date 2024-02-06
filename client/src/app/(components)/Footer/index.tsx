@@ -1,8 +1,18 @@
+import { stripe } from '@/utils/stripe'
 import Image from 'next/image'
 import Link from 'next/link'
 
 // Functional Component
-export default function Footer() {
+export default async function Footer() {
+  const products = await stripe.products.list()
+  const categories: string[] = []
+
+  products.data.forEach((product) => {
+    if (!categories.includes(product.metadata.category)) {
+      categories.push(product.metadata.category)
+    }
+  })
+
   // Rendering
   return (
     <div className="bg-dark pb-[48px] pt-[75px]">
@@ -18,7 +28,7 @@ export default function Footer() {
               height={25}
             />
             <p className="mb-[48px] text-body text-white opacity-50 md:mb-0">
-              Audiophile is an all in one stop to fulfill your audio needs. We
+              Apple Center is an all in one stop to fulfill your audio needs. We
               are a small team of music lovers and sound specialists who are
               devoted to helping you get the most out of personal audio. Come
               and visit our demo facility - we are open 7 days a week.
@@ -32,21 +42,13 @@ export default function Footer() {
                   Home
                 </li>
               </Link>
-              <Link href="/category/headphones">
-                <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
-                  Headphones
-                </li>
-              </Link>
-              <Link href="/category/speakers">
-                <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
-                  Speakers
-                </li>
-              </Link>
-              <Link href="/category/earphones">
-                <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
-                  Earphones
-                </li>
-              </Link>
+              {categories.map((category: string, index: number) => (
+                <Link key={index} href={`/category/${category}`}>
+                  <li className="cursor-pointer text-nav uppercase text-white duration-300 hover:text-primary-300">
+                    {category}
+                  </li>
+                </Link>
+              ))}
             </ul>
             <nav className="flex justify-end gap-[16px]">
               <a href="">

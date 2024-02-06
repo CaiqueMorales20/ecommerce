@@ -64,10 +64,7 @@ export default function ContextProvider({ children }: { children: ReactNode }) {
   }
 
   // useEffect(() => {
-  //   const newCartContent = cart.filter((product) => {
-  //     return product.quantity !== 0
-  //   })
-  //   setCart(newCartContent)
+  //   console.log(cart)
   // }, [cart])
 
   // Rendering

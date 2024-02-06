@@ -56,7 +56,7 @@ export default function Nav({ categories }: { categories: string[] }) {
       {/* Nav */}
       <ul
         ref={menuRef}
-        className={`fixed top-[126px]  flex w-[90%] flex-col items-center gap-[20px] rounded-lg  py-[20px] duration-300 md:static md:flex-row md:gap-[34px] md:rounded-none md:py-0 ${
+        className={`fixed top-[126px] mx-auto flex w-[90%] flex-col items-center gap-[20px] rounded-lg  py-[20px] duration-300 md:static md:flex-row md:gap-[34px] md:rounded-none md:py-0 ${
           openedMenu
             ? 'z-30 bg-white opacity-100'
             : '-z-10 opacity-0 md:z-10 md:opacity-100'

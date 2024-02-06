@@ -4,9 +4,10 @@ import { useOnClickOutside } from '@/hooks/useOnClickOutside'
 import { useEffect, useRef, useState } from 'react'
 import Item from './Item'
 import Button from '../Button'
-import { useRouter } from 'next/navigation'
 import { useProductContext } from '@/context'
 import formatValue from '@/utils/formatValue'
+import { useRouter } from 'next/navigation'
+import { loadStripe, Stripe } from '@stripe/stripe-js'
 
 type ICart = {
   openedMenu: boolean
@@ -19,6 +20,17 @@ export default function Cart({ openedMenu, onRequestClose }: ICart) {
   const { cart, clearCart } = useProductContext()
   const [isMenuOpened, setIsMenuOpened] = useState(openedMenu)
   const [totalValue, setTotalValue] = useState(0)
+  const [stripe, setStripe] = useState<Stripe | null>()
+
+  useEffect(() => {
+    async function handleStripe() {
+      if (!process.env.NEXT_PUBLIC_Stripe_PK) return
+      const stripeClient = await loadStripe(process.env.NEXT_PUBLIC_Stripe_PK)
+      console.log('Stripe client initialized:', stripeClient)
+      setStripe(stripeClient)
+    }
+    handleStripe()
+  }, [])
 
   useEffect(() => {
     const pricesArray = cart.map((item) => {
@@ -40,6 +52,28 @@ export default function Cart({ openedMenu, onRequestClose }: ICart) {
   const router = useRouter()
 
   useOnClickOutside(menuRef, () => onRequestClose(), 'mousedown', isMenuOpened)
+
+  async function checkout() {
+    const res = await fetch('/api/checkout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cart),
+    })
+
+    if (res.ok) {
+      const data = await res.json()
+      console.log('olha os dados aqui olha olha', data.id)
+      router.push(`https://checkout.stripe.com/c/pay/${data.id}`)
+      if (!stripe) return
+      stripe.redirectToCheckout({
+        sessionId: data.id,
+      })
+    } else {
+      console.log('Failed to checkout', res.statusText)
+    }
+  }
 
   function handleClearCart() {
     onRequestClose()
@@ -87,7 +121,7 @@ export default function Cart({ openedMenu, onRequestClose }: ICart) {
             {/* Finish */}
             <Button
               onClick={() => {
-                router.push('/checkout')
+                checkout()
                 onRequestClose()
               }}
               className="w-full"
