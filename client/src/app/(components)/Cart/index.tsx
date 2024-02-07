@@ -6,7 +6,6 @@ import Item from './Item'
 import Button from '../Button'
 import { useProductContext } from '@/context'
 import formatValue from '@/utils/formatValue'
-import { useRouter } from 'next/navigation'
 import { loadStripe, Stripe } from '@stripe/stripe-js'
 
 type ICart = {
@@ -25,7 +24,10 @@ export default function Cart({ openedMenu, onRequestClose }: ICart) {
   useEffect(() => {
     async function handleStripe() {
       if (!process.env.NEXT_PUBLIC_Stripe_PK) return
-      const stripeClient = await loadStripe(process.env.NEXT_PUBLIC_Stripe_PK)
+      // console.log(process.env.NEXT_PUBLIC_Stripe_PK as string)
+      const stripeClient = await loadStripe(
+        process.env.NEXT_PUBLIC_Stripe_PK as string,
+      )
       console.log('Stripe client initialized:', stripeClient)
       setStripe(stripeClient)
     }
@@ -49,7 +51,6 @@ export default function Cart({ openedMenu, onRequestClose }: ICart) {
   }, [cart])
 
   const menuRef = useRef(null)
-  const router = useRouter()
 
   useOnClickOutside(menuRef, () => onRequestClose(), 'mousedown', isMenuOpened)
 
@@ -65,7 +66,6 @@ export default function Cart({ openedMenu, onRequestClose }: ICart) {
     if (res.ok) {
       const data = await res.json()
       console.log('olha os dados aqui olha olha', data.id)
-      router.push(`https://checkout.stripe.com/c/pay/${data.id}`)
       if (!stripe) return
       stripe.redirectToCheckout({
         sessionId: data.id,
