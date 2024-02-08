@@ -25,9 +25,9 @@ export default async function RootLayout({
           <Provider>
             <Header />
             {children}
+            <Footer />
           </Provider>
         </ContextProvider>
-        <Footer />
       </body>
     </html>
   )

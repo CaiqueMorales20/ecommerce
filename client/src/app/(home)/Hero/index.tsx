@@ -28,7 +28,7 @@ export default async function Hero() {
         </div>
         <div className="col-start-1 row-start-1 flex w-full justify-center md:col-start-2 md:justify-center">
           <Image
-            className="h-auto w-[50%] max-w-[120%] opacity-50 md:w-[100%] md:opacity-100"
+            className="h-auto w-[50%] max-w-[120%] opacity-50 md:w-[100%] md:max-w-[600px] md:opacity-100"
             src={lastProduct.images[0]}
             alt="Hero"
             width={500}

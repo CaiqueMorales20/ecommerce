@@ -15,7 +15,8 @@ export async function POST(req: NextRequest) {
     mode: 'payment',
     payment_method_types: ['card'],
     line_items: products,
-    success_url: `${baseURL}/sucess/`,
+    success_url: `${baseURL}/success/`,
+    currency: 'BRL',
     cancel_url: `${baseURL}/`,
     allow_promotion_codes: true,
   })

@@ -52,7 +52,8 @@ export default function Nav({ categories }: { categories: string[] }) {
         priority
       />
       {/* Logo */}
-      <Image src="/logo.svg" alt="Audiphile" width={143} height={25} priority />
+      {/* <Image src="/logo.svg" alt="Audiphile" width={143} height={25} priority /> */}
+      <h1 className="text-2xl font-black text-white">Apple Place</h1>
       {/* Nav */}
       <ul
         ref={menuRef}
