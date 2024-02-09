@@ -1,4 +1,5 @@
 # Ecommerce
+This Next.js E-Commerce template is designed to kickstart your freelance projects by providing a solid foundation for building online stores. Leveraging the power of Next.js for server-side rendering, Tailwind CSS for easy styling, and Stripe for seamless payment integration, this template offers a robust solution for creating modern e-commerce experiences.
 
 ## 🖥️ Preview
 
