@@ -16,6 +16,9 @@ This Next.js E-Commerce template is designed to kickstart your freelance project
 <img src="https://imgur.com/9MA089z.png"/>
 <img src="https://imgur.com/qsBukwG.png"/>
 
+### Product Page
+<img src="https://imgur.com/vL5Q71W.png"/>
+
 ## 🛠 Technologies
 
 - Next
